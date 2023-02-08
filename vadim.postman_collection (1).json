@@ -494,7 +494,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{ip_port}}/object_info_4?name=Dasha&age=35&salary=50000",
+					"raw": "{{ip_port}}/object_info_4?name={{name}}&age={{age}}&salary={{salary}}",
 					"host": [
 						"{{ip_port}}"
 					],
@@ -504,15 +504,15 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Dasha"
+							"value": "{{name}}"
 						},
 						{
 							"key": "age",
-							"value": "35"
+							"value": "{{age}}"
 						},
 						{
 							"key": "salary",
-							"value": "50000"
+							"value": "{{salary}}"
 						}
 					]
 				}
@@ -565,7 +565,9 @@
 							"});\r",
 							"pm.test(\"salary_2\", function (){\r",
 							"    pm.expect(req_salary*3).to.eql(+resp_salary_2)\r",
-							"});"
+							"});\r",
+							"\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -598,7 +600,7 @@
 					]
 				},
 				"url": {
-					"raw": "{{ip_port}}/object_info_4?name={{name}}&age={{age}}&salary={{salary}}",
+					"raw": "{{ip_port}}/object_info_4?name=Dasha&age=35&salary=1000",
 					"host": [
 						"{{ip_port}}"
 					],
@@ -608,15 +610,15 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "{{name}}"
+							"value": "Dasha"
 						},
 						{
 							"key": "age",
-							"value": "{{age}}"
+							"value": "35"
 						},
 						{
 							"key": "salary",
-							"value": "{{salary}}"
+							"value": "1000"
 						}
 					]
 				}
@@ -679,6 +681,7 @@
 							"let resp_salary_5 = resp_f.person.u_salary_5_years\r",
 							"\r",
 							"\r",
+							"\r",
 							"pm.test(\"property_1\", function () {\r",
 							"    pm.expect(resp_f).to.have.property(\"start_qa_salary\");\r",
 							"});\r",
@@ -720,7 +723,11 @@
 							"});\r",
 							"pm.test(\"salary_5\", function () {\r",
 							"    pm.expect(req_salary*4.2).to.eql(resp_salary_5);\r",
-							"});"
+							"});\r",
+							"\r",
+							"for (let i in resp_person) {\r",
+							"    console.log(resp_person[i])\r",
+							"}"
 						],
 						"type": "text/javascript"
 					}
